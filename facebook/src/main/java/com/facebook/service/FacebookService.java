@@ -6,7 +6,7 @@ import com.facebook.entity.FacebookUser;
 
 public class FacebookService implements FacebookServiceInterface{
 
-	public int createProfile(FacebookUser f) throws Exception {
+	public int createProfile(FacebookUser f)  {
 		FacebookDAOInterface fd=new FacebookDAO();
 		return fd.createProfileDAO(f);
 	}
@@ -31,8 +31,9 @@ public class FacebookService implements FacebookServiceInterface{
 		
 	}
 
-	public void deleteProfile() {
-		// TODO Auto-generated method stub
+	public int deleteProfile(FacebookUser f)throws Exception {
+		FacebookDAOInterface fd=new FacebookDAO();
+		return fd.deleteProfileDAO(f);
 		
 	}
 

@@ -24,7 +24,7 @@ public class FacebookView {
 		String c = br.readLine();
 		int c1 = Integer.parseInt(c);
 		
-		FacebookControllerInterface fc=new FacebookController();
+		FacebookControllerInterface fc=FacebookController.createObject();
 
 		switch (c1) {
 		case 1:

@@ -8,7 +8,17 @@ import com.facebook.service.FacebookService;
 import com.facebook.service.FacebookServiceInterface;
 
 public class FacebookController implements FacebookControllerInterface{
-	public void createProfile()throws Exception {
+	private FacebookController() {
+		
+	}
+	
+	
+	public static FacebookControllerInterface createObject() {
+		return new FacebookController();
+	}
+	
+	public void createProfile() {
+		try {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("enter name");
 		String name=br.readLine();
@@ -32,6 +42,10 @@ public class FacebookController implements FacebookControllerInterface{
 		if(i>0) {
 		System.out.println("profile created successfully");
 		}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void viewProfile() {
@@ -39,9 +53,18 @@ public class FacebookController implements FacebookControllerInterface{
 		System.out.println("profile viewed");
 	}
 
-	public void deleteProfile() {
+	public void deleteProfile()throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("profile deleted");
+		System.out.println("enter name which you want to delete");
+		String name=br.readLine();
+		FacebookUser f=new FacebookUser();
+		f.setName(name);
+		FacebookServiceInterface fs=new FacebookService();
+		int i=fs.deleteProfile(f);
+		if(i>0) {
+			System.out.println("profile deleted successfully");
+			}
+		
 	}
 
 	public void editProfile() {
