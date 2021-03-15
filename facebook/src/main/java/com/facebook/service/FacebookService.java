@@ -9,6 +9,7 @@ public class FacebookService implements FacebookServiceInterface{
 	public int createProfile(FacebookUser f)  {
 		FacebookDAOInterface fd=new FacebookDAO();
 		return fd.createProfileDAO(f);
+
 	}
 
 	public void viewProfile() {
